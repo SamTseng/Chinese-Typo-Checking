@@ -1,0 +1,6 @@
+# For testing purpose
+test.txt
+
+# Temporary artifact from build process
+.gradle/
+build/
