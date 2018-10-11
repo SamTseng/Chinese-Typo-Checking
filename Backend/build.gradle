@@ -1,0 +1,33 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version = '0.1'
+def jarName = 'STokenizer.jar'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories{
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'commons-logging', name: 'commons-logging', version: '1.1.1'
+    compile group: 'log4j', name: 'log4j', version: '1.2.16'
+    compile group: 'log4j', name: 'log4j', version: '1.2.16'
+    compile group: 'org.apache.spark', name: 'spark-core_2.11', version: '2.2.0'
+    compile group: 'org.apache.spark', name: 'spark-sql_2.11', version: '2.2.0'
+    compile group: 'org.scala-lang', name: 'scala-library', version: '2.11.11'
+}
+
+jar {
+    zip64 true
+    archiveName = jarName
+
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+}
+
+task copyJarToRoot(type: Copy) {
+    from jar
+    into "./"
+}
