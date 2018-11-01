@@ -1,0 +1,14 @@
+<ESSAY title="寫給即將初次見面的筆友的一封信">
+<TEXT>
+<PASSAGE id="B1-0110-1">我們也不要想太多；我們來好好的出去玩吧！</PASSAGE>
+<PASSAGE id="B1-0110-2">最後，我們來去士林夜市吃一點消夜，你可以選烤香腸，臭豆腐，水煎包，等等。</PASSAGE>
+</TEXT>
+<MISTAKE id="B1-0110-1" location="15">
+<WRONG>好好的出去玩</WRONG>
+<CORRECTION>好好地出去玩</CORRECTION>
+</MISTAKE>
+<MISTAKE id="B1-0110-2" location="15">
+<WRONG>消夜</WRONG>
+<CORRECTION>宵夜</CORRECTION>
+</MISTAKE>
+</ESSAY>

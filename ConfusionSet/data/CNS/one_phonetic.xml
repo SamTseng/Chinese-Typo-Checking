@@ -1,0 +1,50 @@
+<Word item = "一">
+<WordFreq>113236</WordFreq>
+<Phone>ㄧ</Phone>
+<Pinyin>yi1</Pinyin>
+<SyntactFunction>Cbbb</SyntactFunction>
+<SyntactFunction>Dd</SyntactFunction>
+<SyntactFunction>Di</SyntactFunction>
+<SyntactFunction>Neu</SyntactFunction>
+<SemanticFeatures>+numeral</SemanticFeatures>
+<SemanticFeatures>-definite</SemanticFeatures>
+</Word>
+<Word item = "一一">
+<WordFreq>353</WordFreq>
+<Phone>ㄧ　ㄧ</Phone>
+<Pinyin>yi1 yi1</Pinyin>
+<SyntactFunction>Dh</SyntactFunction>
+</Word>
+<Word item = "一丁不識">
+<WordFreq>0</WordFreq>
+<Phone>ㄧ　ㄉㄧㄥ　ㄅㄨˊ　ㄕˋ</Phone>
+<Pinyin>yi1 ding1 bu2 shi4</Pinyin>
+<SyntactFunction>VH11</SyntactFunction>
+</Word>
+<Word item = "一丁點">
+<WordFreq>15</WordFreq>
+<Phone>ㄧ　ㄉㄧㄥ　ㄉㄧㄢˇ</Phone>
+<Pinyin>yi1 ding1 dian3</Pinyin>
+<SyntactFunction>Nad</SyntactFunction>
+<SemanticFeatures>+other_quality</SemanticFeatures>
+</Word>
+<Word item = "一下">
+<WordFreq>1498</WordFreq>
+<Phone>ㄧ　ㄒㄧㄚˋ</Phone>
+<Pinyin>yi1 xia4</Pinyin>
+<SyntactFunction>Nddc</SyntactFunction>
+<SemanticFeatures>+temporal_relation</SemanticFeatures>
+</Word>
+<Word item = "一下下">
+<WordFreq>6</WordFreq>
+<Phone>ㄧ　ㄒㄧㄚˋ　ㄒㄧㄚˋ</Phone>
+<Pinyin>yi1 xia4 xia4</Pinyin>
+<SyntactFunction>Ndabf</SyntactFunction>
+<SemanticFeatures>+temporal_relation</SemanticFeatures>
+</Word>
+<Word item = "一下子">
+<WordFreq>308</WordFreq>
+<Phone>ㄧ　ㄒㄧㄚˋ　ㄗ˙</Phone>
+<Pinyin>yi1 xia4 zi5</Pinyin>
+<SyntactFunction>Dd</SyntactFunction>
+</Word>

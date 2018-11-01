@@ -1,0 +1,19 @@
+<DOC Nid="00001">
+<P>我看過許多勇敢的人，不怕措折地奮鬥，這種精神值得我們學習。</P>
+<TEXT>
+<MISTAKE wrong_position=13>
+<WRONG>措折</WRONG>
+<CORRECT>挫折</CORRECT>
+</MISTAKE>
+</TEXT>
+</DOC>
+
+<DOC Nid="00002">
+<P>有一天的晚上，大家都睡得很安祥，突然一陣巨晃，我們家書貴倒了，這次地震驚動了全國。</P>
+<TEXT>
+<MISTAKE wrong_position=28>
+<WRONG>書貴倒</WRONG>
+<CORRECT>書櫃倒</CORRECT>
+</MISTAKE>
+</TEXT>
+</DOC>
