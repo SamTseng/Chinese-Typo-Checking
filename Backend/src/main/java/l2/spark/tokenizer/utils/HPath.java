@@ -41,7 +41,7 @@ public class HPath {
 	    return hexString.toString();
 	}
 	
-	protected File getFilePath(String token, boolean isHead)
+	public File getFilePath(String token, boolean isHead)
 	{		
 		String key = token;
 		if(isHead) key = token.substring(0, 1);

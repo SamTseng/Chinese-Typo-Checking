@@ -20,9 +20,21 @@ public class DelToken{
 		
 		if(stoken.equals("-"))
 		{			
+			hp.delToken(token, false);
 			hp.delToken(token, true);
-			hp.delToken(token, true);
-			System.out.printf("Remove token=%s...Done!\n", token);
+			if(!hp.getFilePath(token, true).exists() && !hp.getFilePath(token, true).exists())
+			{
+				System.out.printf("Remove token=%s...Done!\n", token);
+			}
+			else
+			{
+				System.out.printf("Remove token=%s...Fail!\n%s\n%s\n", token, hp.isHTokenExist(token), 
+						hp.getFilePath(token, true).getAbsolutePath(),
+						hp.getFilePath(token, false).getAbsolutePath());
+			}
+			
+			//hp.delToken(token, true);
+			
 		}
 		else
 		{
