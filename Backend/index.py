@@ -33,7 +33,7 @@ TIMEOUT_PER_SENT = 20
 ''' timeout in second per sentence '''
 
 print("Reading confusion set...")
-with open('ConfusionSet.txt', 'r') as fh:
+with open('../ConfusionSet/ConfusionSet.txt', 'r') as fh:
     for line in fh:
         key, words = line.split(',')
         cf_dict[key.strip()] = words.strip()
