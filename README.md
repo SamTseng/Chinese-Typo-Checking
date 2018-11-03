@@ -1,8 +1,9 @@
 ## Backend Service Introduction
-Here we will introduce how to compile/run/maintain backend service. For the while project introduction, please refer to this slide.
+Here we will introduce how to compile/run/maintain backend service. For the whole project introduction, please refer to [this slide](docs/2018_NTNU_NCU_CTC_1006.pptx) for more details.
 
 * [__Compile Backend Main Program__](#backend_compile) 
 * [__Launch Backend web service__](#backend_web_service)
+* [__Backend Maintenance__](#backend_maintain) 
 
 ## Compile Backend Main Program <a name='backend_compile'></a>
 The Backend Main Program `STokenizer.jar` is used to carry out below two things while get called by web service [`index.py`](Backend/index.py):
@@ -102,4 +103,45 @@ Receiving data:
 Parsing Result:
 Suggested Correction (1):
         具(4) => 句,據,劇
+```
+## Backend Maintenance <a name='backend_maintain'></a>
+Sometimes you will receive feedback on the correctness of the processing result from front-end. Then you can follow below steps to fix the unwanted result observed from the front-end. First of all, all our toolkit are under path [`Backend`](Backend). So before working on below sections, please enter folder [`Backend`](Backend) firstly.
+
+### Unseen sentence/token
+It is very common for our backend to receive un-seen sentece. To solve this issue, you can folow below steps:
+```bash
+// Sentence '青年北漂議題發酵的背後' is never seen before.
+# ./tc.sh 青年北漂議題發酵的背後
+        [Info] No TP found!
+        
+// Save the tokenalized result of unseen sentence into file        
+# echo '青年 北漂 議題 發酵 的 背後' > /tmp/test.txt
+
+// Use toolkit buildTokenPool.sh to add the tokenalized result into backend corpus
+# ./buildTokenPool.sh /tmp/test.txt
+        [Info] Start building token pool...
+        [Info] Done (1)!
+
+// Try again and now our backend can recognize the unseen sentence now
+# ./tc.sh 青年北漂議題發酵的背後
+        [Info] 1 solution(s) found:
+        青年|北漂|議題|發酵|的|背後        
+```
+
+### Remove Wrong Tokenalized Result from corpus
+Sometimes we may find some wrong token in our corpus. For example:
+```bash
+# ./tc.sh 陷井重重的道路
+        [Info] 3 solution(s) found:
+        陷井|重重|的|道路
+```
+Here the token '陷井' is the unwanted token. We can use toolkit [`delToken.sh`](Backend/delToken.sh) to remove unwanted token:
+```bash
+// Remove the token '陷井'
+# ./delToken.sh 陷井 -
+Remove token=陷井...Done!
+
+// Double confirm the deletion 
+# ./tc.sh 陷井重重的道路
+        [Info] No TP found!
 ```
