@@ -43,14 +43,12 @@ if __name__ == '__main__':
     if args.i:
         sent = args.i
 
-    #if len(sys.argv) > 1:
-    #    sent = sys.argv[1]
 
 
     print('Send {}'.format(sent))
-    data = {'uid':uid, 'key':key, 'sent':sent}
+    data = {'uid':uid, 'key':key, 'Data':sent}
     print('Send {}: {}'.format(sent, data)) 
-    resp = requests.post('http://{}:{}/query'.format(server_ip, server_port), json=data)
+    resp = requests.post('http://{}:{}/api/v1/query'.format(server_ip, server_port), json=data)
     print("Sending data:\n{}\n\n".format(pprint.pformat(data, indent=4)))
     print("="*50)
 
@@ -59,30 +57,26 @@ if __name__ == '__main__':
         resp_json = json.loads(resp.text)
         print("Receiving data:\n{}\n\n".format(pprint.pformat(resp_json, indent=4)))
         print("="*50)
-        r'''
-        {
-            "rst_list": [
-                {
-                    "tokenized": "+\u4ee5 +\u76ee\u524d *\u9f13\u672c +\u4f30\u7b97", 
-                    "collsug": [
-                        {
-                            "sug": ["\u80a1\u672c"], 
-                            "org": "\u9f13\u672c", 
-                            "sp": 3, 
-                            "ep": 5
-                        }], 
-                    "score": 4.9, 
-                    "source_sent": "\u4ee5 \u76ee\u524d \u80a1\u672c \u4f30\u7b97"
-                }], 
-            "sentence": "\u4ee5\u76ee\u524d\u9f13\u672c\u4f30\u7b97"
-        }
-        '''
-        print("Parsing Result:")
-        rst = resp_json['rst_list'][0]
-        print("\tTokenized result: {} ({})".format(rst['tokenized'].encode('utf-8'), rst['source_sent'].encode('utf-8')))
-        if len(rst['collsug']) > 0:
-            print("\tSuggested Correction ({}):".format(len(rst['collsug'])))
-            for s in rst['collsug']:
-                print("\t\t{} ({},{}) -> {}".format(s['org'].encode('utf-8'), s['sp'], s['ep'], s['sug'][0].encode('utf-8')))
+        task_id = resp_json['task_id']
+
+        print('Retrieve task_id={}...'.format(task_id))
+        resp = requests.get('http://{}:{}/api/v1/task/{}'.format(server_ip, server_port, task_id))
+        print("Resp status={}".format(resp.status_code))
+        if resp.status_code == 200:
+            resp_json = json.loads(resp.text)
+            print("Receiving data:\n{}\n\n".format(pprint.pformat(resp_json, indent=4)))
+            print("="*50)
+            print("Parsing Result:")
+            r'''
+[   {   u'ErrorType': u'Spell',
+        u'Notes': u'',
+        u'Position': 5,
+        u'Suggestion': [u'\u53e5', u'\u64da', u'\u5287']}]
+            '''
+            if len(resp_json) > 0:
+                print("Suggested Correction ({}):".format(len(resp_json)))
+                for s in resp_json:
+                    cpos = s['Position'] - 1 
+                    print("\t{}({:,d}) => {}".format(sent[cpos * 3: (cpos+1) * 3], cpos, ','.join(map(lambda e:e.encode('utf-8'), s['Suggestion']))))
 
     print("")
